@@ -26,6 +26,11 @@ char determinarCalificacion(int puntaje)
     else
         nota = 'F';
 
+    if(puntaje > 100 || puntaje < 0)    //Casos extremos
+    {
+        nota = 'X';
+    }
+
     return nota;
 }
 
@@ -56,6 +61,10 @@ int test_calificacion()
     // F
     if (determinarCalificacion(0) != 'F') return 1;
     if (determinarCalificacion(59) != 'F') return 1;
+
+    //Casos extremos
+    if (determinarCalificacion(101) != 'X') return 1;
+    if (determinarCalificacion(-1) != 'X') return 1;
 
     return 0;
 }
